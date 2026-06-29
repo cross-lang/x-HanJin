@@ -1,0 +1,72 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: x-HanJin
+  labels:
+    app: x-HanJin
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: x-HanJin
+  template:
+    metadata:
+      labels:
+        app: x-HanJin
+    spec:
+      containers:
+        - name: x-HanJin
+          image: x-HanJin:latest
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+          volumeMounts:
+            - name: config
+              mountPath: /app/configs
+      volumes:
+        - name: config
+          configMap:
+            name: x-HanJin-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: x-HanJin-service
+spec:
+  selector:
+    app: x-HanJin
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: x-HanJin-config
+data:
+  config.yaml: |
+    Web:
+      host: "0.0.0.0"
+      port: 8080
+    MySQL:
+      host: "x-HanJin-mysql"
+      port: 3306
+      user: "root"
+      password: "your_password"
+      default_dbname: "x-HanJin"
+    Redis:
+      host: "x-HanJin-redis"
+      port: 6379
+      default_db: 0
+    Logger:
+      LogDir: "./log"
+      Level: "info"
+      EnableRemote: false

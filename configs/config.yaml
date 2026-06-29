@@ -1,0 +1,44 @@
+# Web 服务配置
+Web:
+  host: localhost # Web 服务监听地址
+  port: 8080 # Web 服务监听端口
+
+# MySQL 数据库配置
+MySQL:
+  host: localhost # MySQL 数据库地址
+  port: 3306 # MySQL 数据库端口
+  user: root # MySQL 数据库用户名
+  password: 123456 # MySQL 数据库密码（请修改为实际密码）
+  default_dbname: hanjin # 默认数据库名称
+
+# Redis 缓存配置
+Redis:
+  host: localhost # Redis 服务地址
+  port: 6379 # Redis 服务端口
+  default_db: 0 # Redis 默认数据库编号
+
+# Elasticsearch 搜索引擎配置
+ES:
+  address: localhost # Elasticsearch 服务地址
+  user: elastic # Elasticsearch 用户名
+  password: your_password # Elasticsearch 密码（请修改为实际密码）
+
+# RabbitMQ 消息队列配置
+RabbitMQ:
+  host: localhost # RabbitMQ 服务地址
+  port: 5672 # RabbitMQ 服务端口
+  user: admin # RabbitMQ 用户名
+  password: admin123 # RabbitMQ 密码
+  default_queue_name: x-hanjin-queue # 默认队列名称
+
+# 应用配置
+App:
+  app_id: x-HanJin # 应用 ID
+  app_key: your_app_key # 应用密钥（请修改为实际密钥）
+
+# 日志配置
+Logger:
+  LogDir: "./log" # 日志文件存储目录
+  Level: "info" # 日志级别: debug/info/warn/error
+  EnableRemote: false # 是否启用远程日志推送
+  RemoteURL: "http://log-service/api/log" # 远程日志服务地址
