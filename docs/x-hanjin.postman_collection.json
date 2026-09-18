@@ -1,8 +1,8 @@
 {
   "info": {
     "_postman_id": "8f0dd3a5-8b4a-4be4-8ec3-1b4f2f920001",
-    "name": "x-HanJin API",
-    "description": "x-HanJin 用户管理 API。导入后请在集合变量中配置 baseUrl、appId 和 appKey。请求签名由集合级预请求脚本自动生成。",
+    "name": "汉津（Hanjin）",
+    "description": "一个基于 Gin 框架深度封装的生产级 Go Web 项目框架",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "event": [
@@ -53,8 +53,14 @@
   ],
   "item": [
     {
-      "name": "用户管理",
+      "name": "api",
       "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "users",
+              "item": [
         {
           "name": "创建用户",
           "request": {
@@ -175,6 +181,10 @@
             "description": "根据用户 ID 删除用户。"
           },
           "response": []
+        }
+              ]
+            }
+          ]
         }
       ]
     }

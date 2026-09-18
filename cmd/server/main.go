@@ -4,16 +4,15 @@ package main
 import (
 	"fmt"
 
+	"x-HanJin/internal/api"
 	"x-HanJin/internal/config"
 	"x-HanJin/internal/databases"
 	"x-HanJin/internal/message_queues"
-	"x-HanJin/internal/routes"
 	"x-HanJin/pkg/log"
 
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 )
-
 
 // @title           x-HanJin API
 // @description     汉津应用 API 接口文档
@@ -46,8 +45,8 @@ func main() {
 
 	// 初始化 Gin 路由
 	r := gin.Default()
-	
-	routes.InitRoutes(r)
+
+	api.InitRoutes(r)
 
 	// 启动服务
 	addr := fmt.Sprintf("%s:%d", config.Cfg.WebHost, config.Cfg.WebPort)

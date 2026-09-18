@@ -89,7 +89,10 @@ x-HanJin/
 │   ├── models/                     # 数据模型
 │   │   └── user/
 │   │       └── request/            # 请求 DTO
-│   ├── routes/                     # 路由注册
+│   ├── api/                        # API 路由注册
+│   │   ├── router.go              # 聚合各版本 API 路由
+│   │   └── v1/
+│   │       └── users.go           # 用户模块 API
 │   ├── services/                   # 业务逻辑层
 │   └── tasks/                      # 定时任务调度
 ├── pkg/                            # 可复用的公共包（可被外部项目导入）
@@ -196,7 +199,7 @@ flowchart TD
     exception["exception"]
     signature["signature"]
 
-    routes["internal/routes\n路由注册"]
+    routes["internal/api\nAPI 路由注册"]
     controllers["controllers"]
     services["services"]
 

@@ -91,7 +91,10 @@ x-HanJin/
 │   ├── models/                     # Data models
 │   │   └── user/
 │   │       └── request/            # Request DTOs
-│   ├── routes/                     # Route registration
+│   ├── api/                        # API route registration
+│   │   ├── router.go              # Aggregate versioned API routes
+│   │   └── v1/
+│   │       └── users.go           # User API routes
 │   ├── services/                   # Business logic layer
 │   └── tasks/                      # Scheduled tasks
 ├── pkg/                            # Reusable public packages
@@ -198,7 +201,7 @@ flowchart TD
     exception["exception"]
     signature["signature"]
 
-    routes["internal/routes\nRoute registration"]
+    routes["internal/api\nAPI route registration"]
     controllers["controllers"]
     services["services"]
 
