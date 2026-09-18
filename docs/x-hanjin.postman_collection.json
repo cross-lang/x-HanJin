@@ -1,0 +1,182 @@
+{
+  "info": {
+    "_postman_id": "8f0dd3a5-8b4a-4be4-8ec3-1b4f2f920001",
+    "name": "x-HanJin API",
+    "description": "x-HanJin 用户管理 API。导入后请在集合变量中配置 baseUrl、appId 和 appKey。请求签名由集合级预请求脚本自动生成。",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "const version = 'TestGin-1';",
+          "const appId = pm.variables.replaceIn('{{appId}}');",
+          "const appKey = pm.variables.replaceIn('{{appKey}}');",
+          "const method = pm.request.method;",
+          "const uri = pm.request.url.getPath();",
+          "const contentType = 'application/json';",
+          "const timestamp = new Date().toISOString();",
+          "const body = pm.request.body && pm.request.body.mode === 'raw' ? pm.variables.replaceIn(pm.request.body.raw || '') : '';",
+          "const bodyHash = ['POST', 'PUT'].includes(method) ? CryptoJS.SHA256(body).toString(CryptoJS.enc.Hex) : '';",
+          "const signString = version + method + uri + contentType + timestamp + bodyHash;",
+          "const signature = CryptoJS.HmacSHA256(signString, appKey).toString(CryptoJS.enc.Hex);",
+          "pm.request.headers.upsert({ key: 'Content-Type', value: contentType });",
+          "pm.request.headers.upsert({ key: 'TestGin-Date', value: timestamp });",
+          "pm.request.headers.upsert({ key: 'TestGin-Authorization', value: version + ' ' + appId + ':' + signature });"
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080",
+      "type": "string"
+    },
+    {
+      "key": "appId",
+      "value": "x-HanJin",
+      "type": "string"
+    },
+    {
+      "key": "appKey",
+      "value": "your_app_key",
+      "type": "string"
+    },
+    {
+      "key": "userId",
+      "value": "1",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "用户管理",
+      "item": [
+        {
+          "name": "创建用户",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"张三\",\n  \"age\": 18,\n  \"email\": \"test@test.com\",\n  \"gender\": \"male\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/users",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "users"
+              ]
+            },
+            "description": "创建新用户。"
+          },
+          "response": []
+        },
+        {
+          "name": "获取所有用户",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/users",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "users"
+              ]
+            },
+            "description": "获取所有用户列表。"
+          },
+          "response": []
+        },
+        {
+          "name": "根据 ID 获取用户",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/users/{{userId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "users",
+                "{{userId}}"
+              ]
+            },
+            "description": "根据用户 ID 获取用户信息。"
+          },
+          "response": []
+        },
+        {
+          "name": "更新用户",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"李四\",\n  \"age\": 20,\n  \"email\": \"lisi@test.com\",\n  \"gender\": \"female\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/users/{{userId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "users",
+                "{{userId}}"
+              ]
+            },
+            "description": "更新用户信息。"
+          },
+          "response": []
+        },
+        {
+          "name": "删除用户",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/users/{{userId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "users",
+                "{{userId}}"
+              ]
+            },
+            "description": "根据用户 ID 删除用户。"
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
