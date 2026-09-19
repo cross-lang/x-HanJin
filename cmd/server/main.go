@@ -16,13 +16,13 @@ import (
 
 // @title           x-HanJin API
 // @description     汉津应用 API 接口文档
-// @termsOfService  https://gitee.com/cross-lang/x-HanJin
+// @termsOfService  https://github.com/cross-lang/x-HanJin
 
-// @contact.name   yeyushilai-team
-// @contact.url    https://gitee.com/cross-lang/x-HanJin
+// @contact.name   yeyushilai
+// @contact.url    https://github.com/cross-lang/x-HanJin
 
 // @license.name  MIT
-// @license.url   https://gitee.com/cross-lang/x-HanJin/blob/main/LICENSE
+// @license.url   https://github.com/cross-lang/x-HanJin/blob/main/LICENSE
 
 // @host      localhost:8080
 // @BasePath  /api/v1

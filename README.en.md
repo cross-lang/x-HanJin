@@ -1,63 +1,30 @@
-# x-HanJin (HanJin)
+# HanJin
 
-> A production-grade Go Web framework deeply encapsulated based on Gin framework, providing a structured, modular, and easily extensible backend service infrastructure.
+[中文](README.md) | English
 
 ## Project Overview
 
-x-HanJin (HanJin) is a production-grade Go Web backend service framework, adopting standard Go project directory layout (cmd / pkg / internal), pre-integrated with databases, message queues, caches, logging, middleware, encryption tools, and other common components, allowing developers to quickly build business services on this foundation.
+`HanJin` is a production-grade Go Web backend framework built on Gin, adopting the standard Go project layout (cmd / pkg / internal). Pre-integrated with databases, message queues, caching, logging, middleware, and encryption utilities, it is well-suited for small-to-medium web backends, microservice modules, and business systems requiring fast iteration with multiple data source integration.
 
-**Core Values:**
+## Core Values
 
-- Ready to use: Pre-configured production-grade infrastructure components
-- Standard specifications: Follows Go project standard layout and best practices
-- Highly modular: Clear layered architecture, easy to extend and maintain
-- Enterprise-grade features: Comprehensive logging, monitoring, encryption, and containerization support
+- **Ready to Use** — Pre-configured production-grade components for rapid business development
+- **Standard Compliance** — Follows Go project standard layout and best practices
+- **Highly Modular** — Clear layered architecture (Controller → Service → Database), easy to extend
+- **Enterprise-Grade** — Comprehensive logging, encryption, signature verification, and containerized deployment
 
-**Use Cases:**
+**Feature Overview**:
 
-- Small to medium enterprise Web backend services
-- Independent service modules in microservice architecture
-- Fast-iterating project development
-- Complex business systems requiring integration of multiple data sources and message queues
-
-## Core Features
-
-### Production-Grade Features
-
-- **RESTful API**: CRUD interfaces based on Gin with routing groups and API versioning
-- **Swagger Documentation**: Interactive online API documentation with JSON/YAML offline export
-- **Log Management**: Structured JSON logging based on Zap with date rotation, trace_id tracking, and remote push support
-- **Configuration Management**: Based on Viper, supporting YAML/JSON/ENV multi-format configuration
-- **Exception Recovery**: Panic capture middleware that logs stack traces to ensure stable service operation
-- **Signature Verification**: HMAC-SHA256 request signature middleware preventing timing attacks for interface security
-
-### Data Storage
-
-- **MySQL**: ORM operations based on GORM with automatic migration support
-- **Elasticsearch**: Index creation, document CRUD, batch upsert operations
-- **Redis**: Cache and session storage (placeholder)
-- **PostgreSQL**: Relational database support (placeholder)
-- **TDengine**: Time-series database support (placeholder)
-
-### Messaging and Events
-
-- **RabbitMQ**: Producer/consumer pattern with queue declaration and message publish/subscribe
-- **Kafka**: High-throughput message system (placeholder)
-- **RocketMQ**: Distributed message system (placeholder)
-- **Event Processing**: Event/message distribution framework with signature verification and decryption
-- **Scheduled Tasks**: Based on robfig/cron with second-level cron expressions and periodic tasks
-
-### Security and Encryption
-
-- **AES Encryption**: Supports CBC/ECB/GCM modes
-- **RSA Encryption**: Asymmetric encryption support
-- **National Cryptography Standards**: Complete SM2/SM3/SM4 national cryptography algorithm support
-
-### Development and Deployment
-
-- **Local Development**: Hot reload (Air) and debug mode support
-- **Container Deployment**: Docker multi-stage build with Docker Compose and Kubernetes orchestration support
-- **Load Balancing**: Nginx / HAProxy reverse proxy and load balancing configuration
+| Capability | Technology |
+|------------|------------|
+| Web Framework & API | Gin + RESTful + Swagger Documentation |
+| Data Storage | MySQL (GORM), Elasticsearch, Redis / PostgreSQL / TDengine (extensible) |
+| Message Queues | RabbitMQ (implemented), Kafka / RocketMQ (extensible) |
+| Logging & Monitoring | Zap structured logging + Lumberjack rotation + trace_id tracking |
+| Security & Encryption | AES / RSA + SM2 / SM3 / SM4 National Cryptography |
+| Middleware | Panic Recovery, HMAC-SHA256 Signature Verification |
+| Scheduled Tasks | robfig/cron with second-level precision |
+| Deployment | Docker multi-stage build + Compose / Kubernetes + Nginx / HAProxy |
 
 ## Project Structure
 
@@ -287,7 +254,7 @@ flowchart TD
 ### Project Clone
 
 ```bash
-git clone https://github.com/yeyushilai/x-HanJin.git
+git clone https://github.com/cross-lang/x-HanJin.git
 cd x-HanJin
 ```
 
@@ -459,11 +426,9 @@ docker-compose -f deploy/docker-compose/docker-compose.yaml up -d
 ## Technology Stack
 
 ### Web Framework
-
 - [Gin](https://github.com/gin-gonic/gin) - High-performance HTTP framework
 
 ### Data Storage
-
 - [GORM](https://gorm.io) - Go language ORM library
 - MySQL - Main data storage
 - Elasticsearch - Search engine
@@ -471,25 +436,21 @@ docker-compose -f deploy/docker-compose/docker-compose.yaml up -d
 - PostgreSQL - Relational database (placeholder)
 
 ### Message Queues
-
 - RabbitMQ - Async messaging
 - Kafka - High-throughput message system (placeholder)
 - RocketMQ - Distributed message system (placeholder)
 
 ### Tool Libraries
-
 - [Viper](https://github.com/spf13/viper) - Configuration management, supports YAML/JSON/ENV multi-format
 - [Zap](https://github.com/uber-go/zap) + [Lumberjack](https://github.com/natefinch/lumberjack) - Structured JSON logging + file rotation
 - [robfig/cron](https://github.com/robfig/cron) - Scheduled tasks with second-level precision
 - [Swaggo](https://github.com/swaggo/swag) - Swagger auto-generation
 
 ### Encryption and Security
-
 - AES / RSA - Common encryption algorithms
 - [SM2-SM4](https://github.com/tjfoc/gmsm) - National cryptography algorithms
 
 ### Deployment Tools
-
 - Docker - Containerization
 - Docker Compose - Multi-container orchestration
 - Kubernetes - Container orchestration

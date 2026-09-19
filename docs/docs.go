@@ -9,14 +9,14 @@ const docTemplate = `{
     "info": {
         "description": "{{escape .Description}}",
         "title": "{{.Title}}",
-        "termsOfService": "https://gitee.com/cross-lang/x-HanJin",
+        "termsOfService": "https://github.com/cross-lang/x-HanJin",
         "contact": {
             "name": "yeyushilai-team",
-            "url": "https://gitee.com/cross-lang/x-HanJin"
+            "url": "https://github.com/cross-lang/x-HanJin"
         },
         "license": {
             "name": "MIT",
-            "url": "https://gitee.com/cross-lang/x-HanJin/blob/main/LICENSE"
+            "url": "https://github.com/cross-lang/x-HanJin/blob/main/LICENSE"
         },
         "version": "{{.Version}}"
     },
